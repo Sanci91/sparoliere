@@ -1,0 +1,15 @@
+{
+  "name": "sparoliere",
+  "version": "0.0.1",
+  "description": "The mindblowing word game",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-postcss": "^0.8.0"
+  }
+}
