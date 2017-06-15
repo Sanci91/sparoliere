@@ -127,7 +127,7 @@ var sparola =  {
 			if(this.maxLevel != this.level){
 				this.level = this.level +1;
 				this.attempts = 0;
-				var divs = $('#start, #progressBar, .choice, .result');
+				var divs = $('#start, #game');
 				divs.toggleClass('hide');
 				// $('#progressBar').toggleClass('hide');
 				this.loadStartButton();
@@ -162,7 +162,7 @@ var sparola =  {
 	loadStartButton() {
 		console.log('chiamato?');
 		$('#start').one("click", function(e) {
-			$('#start, #progressBar, .choice, .result').toggleClass('hide');
+			$('#start, #game').toggleClass('hide');
 			// $('#progressBar').toggleClass('hide');
 			sparola.init();
 		});
