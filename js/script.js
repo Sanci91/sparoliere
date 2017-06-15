@@ -14,6 +14,7 @@ var sparola =  {
 		this.randomWord();
 		this.stampa(this.shuffle(), 'text');
 		this.startTimer(this.startTime, this.startTime, $('#progressBar'));
+		$('#level').text("Livello " + this.level);
 		if(this.attempts == 0 && this.level == 1){
 			this.verify();
 		}
@@ -126,7 +127,11 @@ var sparola =  {
 			if(this.maxLevel != this.level){
 				this.level = this.level +1;
 				this.attempts = 0;
-				this.init();
+				var divs = $('#start, #progressBar, .choice, .result');
+				divs.toggleClass('hide');
+				// $('#progressBar').toggleClass('hide');
+				this.loadStartButton();
+				// this.init();
 			}
 			else {
 				this.winScreen();
@@ -140,6 +145,7 @@ var sparola =  {
 		this.updateAttempts(this.attempts);
 		this.stampa("Hai perso", 'result', 'wrong');
 		this.stopTimer();
+		$('.response').unbind('click');
 	},
 	updateAttempts: function(tries) {
 		this.attempts = tries;
@@ -152,7 +158,23 @@ var sparola =  {
 	winScreen: function() {
 		$('.winner').removeClass('hide');
 		$('#video').get(0).play();
+	},
+	loadStartButton() {
+		console.log('chiamato?');
+		$('#start').one("click", function(e) {
+			$('#start, #progressBar, .choice, .result').toggleClass('hide');
+			// $('#progressBar').toggleClass('hide');
+			sparola.init();
+		});
 	}
 }
-sparola.init();
+
+// $(document).ready(function(){
+// 	var text = $('#level').text("Livello " + sparola.level);
+// });
+
+
+sparola.loadStartButton();
+
+
 })(jQuery);

@@ -6,16 +6,19 @@
 </head>
 <body>
 <div id="main">
-	<p>Decidi se la parola sottostante è scritta in maniera corretta. <br/> Puoi utilizzare la freccia sinistra della tastiera per rispondere sì e quella destra per rispondere no. <br/> Premere su "inizia" per iniziare.</p>
-	<div id="start">GO</div>
+	<p>Decidi se la parola sottostante è scritta in maniera corretta. <br/> Puoi utilizzare la freccia sinistra della tastiera per rispondere sì e quella destra per rispondere no. <br/> Premere su "Start" per iniziare.</p>
+	<div id="level"></div>
+	<div id="start">
+		<span>START</span>
+	</div>
 	<div class="text"></div>
 	<div class="attempts"></div>
-	<div class="choice">
+	<div class="choice hide">
 		<h2 class="response yes">SI</h2>
 		<h2 class="response no">NO</h2>
 	</div>
-	<center><h2 class="result"></h2></center>
-	<div id="progressBar">
+	<center><h2 class="result hide"></h2></center>
+	<div id="progressBar" class="hide">
 	  <div></div>
 	</div>
 	<div class="winner hide">

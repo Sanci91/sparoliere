@@ -1,0 +1,8 @@
+# Ignore media
+video/*
+
+# Ignore node modules
+node_modules
+
+#Sass
+.sass-cache

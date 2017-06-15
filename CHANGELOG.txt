@@ -1,3 +1,11 @@
+1.0.2,   15-06-2017
+-------------------
+	- Added project to github.
+	- Added button to start the game. Now it doesn't start on pageload anymore. The button appears before each level.
+	- Disabled clicking on buttons when game is lost.
+	- Added indicator of the level.
+	- Added .gitignore file.
+	
 1.0.1,   14-06-2017
 -------------------
 	- Changed the way the letter are shuffled and the percentage of shuffling a word. Now it is set as 33%;
