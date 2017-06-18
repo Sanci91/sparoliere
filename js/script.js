@@ -15,13 +15,11 @@ var sparola =  {
 		this.stampa(this.shuffle(), 'text');
 		this.startTimer(this.startTime, this.startTime, $('#progressBar'));
 		$('#level').text("Livello " + this.level);
-		if(this.attempts == 0 && this.level == 1){
+		// if(this.attempts == 0 && this.level == 1){
 			this.verify();
-		}
+		// }
 	},
 	shuffle : function() {
-		// var from = this.getRandomIndex(1, this.text.length - 2);
-		// var to = this.getRandomIndex(1, this.text.length - 2);
 		if(Math.random() > this.shufflePercentage){
 			var from = this.getRandomIndex(1, this.text.length - 3);
 			var to = from + 1;
@@ -43,6 +41,7 @@ var sparola =  {
 		$('.'+classe).text(testo).removeClass('right wrong').addClass(classeColore);
 	},
 	verify: function() {
+		this.stopActions();
 		var self = this;
 		$('body').on('keydown', function(e){
 			var key = e.which;
@@ -92,17 +91,22 @@ var sparola =  {
 	    	self.stampa('Game over', 'result', 'wrong');
 	    	$element.find('div').html('').css('padding', '0');
 	    	clearTimeout(self.timer);
+	    	self.stopActions();
+	    	self.stopTimer();
 	    }
 	},
 	randomWord: function(){
 		if (this.level == 1) {
-			var words = ['gatto', 'dente', 'tempo', 'salto', 'pausa'];
+			var words = ['gatto', 'dente', 'tempo', 'salto', 'pausa', 'gente', 'salto',
+			 'conto', 'pista', 'pasto', 'posta', 'mente', 'lungo', 'vinte', 'tante', 'verde', 'mondo'];
 		}
 		else if (this.level == 2) {
-			var words = ['vedere', 'veloce', 'pulizia', 'pratico', 'medico'];
+			var words = ['vedere', 'veloce', 'pulizia', 'pratico', 'medico', 'anatra', 'pecora', 'felice', 'sentire', 'giallo',
+			'cavolo', 'napoli', 'sedile'];
 		}
 		else {
-			var words = ['innaffiatoio', 'asciugamano', 'categoria', 'praticamente', 'psicologo'];
+			var words = ['innaffiatoio', 'asciugamano', 'categoria', 'praticamente', 'psicologo', 'paracadute',
+			'pomodoro', 'piffero', 'termometro', 'poliziotto', 'fotografia'];
 		}
 		
 		this.text = words[this.getRandomIndex(0, words.length - 1)];
@@ -121,17 +125,16 @@ var sparola =  {
 	rightAnswer : function() {
 		this.stopTimer();
 		this.updateAttempts(this.attempts + 1);
+		this.updateTableRow(true);
 		this.stampa("Corretto", 'result', 'right');
 		if(this.startTime == 1) {
-			alert("Congratulazioni, hai vinto!");
+			this.stampa('Hai vinto il livello' + this.level, 'level', 'right');
 			if(this.maxLevel != this.level){
 				this.level = this.level +1;
 				this.attempts = 0;
 				var divs = $('#start, #game');
 				divs.toggleClass('hide');
-				// $('#progressBar').toggleClass('hide');
 				this.loadStartButton();
-				// this.init();
 			}
 			else {
 				this.winScreen();
@@ -143,38 +146,49 @@ var sparola =  {
 	},
 	wrongAnswer: function() {
 		this.updateAttempts(this.attempts);
+		this.updateTableRow(false);
 		this.stampa("Hai perso", 'result', 'wrong');
+		this.stopActions();
 		this.stopTimer();
-		$('.response').unbind('click');
 	},
 	updateAttempts: function(tries) {
 		this.attempts = tries;
 		$('.attempts').text(this.attempts + "/" + this.total);
+		$('#storico tbody').append('<tr><td>'+ this.text +'</td><td>' + $('.text').text() + '</td></tr>');
 	},
 	debug: function(text) {
 		var temp = $('#debug').html();
 		$('#debug').html(temp + "   " + text);
 	},
 	winScreen: function() {
+		this.stopActions();
+		var divs = $('#start, #game');
+		divs.toggleClass('hide');
 		$('.winner').removeClass('hide');
-		$('#video').get(0).play();
+		// $('#video').get(0).play();
 	},
 	loadStartButton() {
-		console.log('chiamato?');
+		this.stopActions();
+		var self = this;
 		$('#start').one("click", function(e) {
 			$('#start, #game').toggleClass('hide');
-			// $('#progressBar').toggleClass('hide');
-			sparola.init();
+			self.init();
 		});
+	},
+	updateTableRow(correct){
+		if(correct){
+			$('#storico tr:last').addClass('right');
+		}
+		else {
+			$('#storico tr:last').addClass('wrong');
+		}
+	},
+	stopActions() {
+		$('.response').unbind('click');
+		$('body').unbind('keydown');
 	}
 }
 
-// $(document).ready(function(){
-// 	var text = $('#level').text("Livello " + sparola.level);
-// });
-
-
 sparola.loadStartButton();
-
 
 })(jQuery);

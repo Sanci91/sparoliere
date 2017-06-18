@@ -1,3 +1,10 @@
+1.0.3,   18-06-2017
+-------------------
+	-Fixed arrows working even on intermediate states;
+	-Added more words
+	-Replaced winning video with image;
+	-Removed play area when win image is shown;
+
 1.0.2,   15-06-2017
 -------------------
 	- Added project to github.
