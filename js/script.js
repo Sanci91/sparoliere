@@ -91,6 +91,8 @@ var sparola =  {
 	    	self.stampa('Game over', 'result', 'wrong');
 	    	$element.find('div').html('').css('padding', '0');
 	    	clearTimeout(self.timer);
+	    	self.stopActions();
+	    	self.stopTimer();
 	    }
 	},
 	randomWord: function(){
@@ -146,6 +148,7 @@ var sparola =  {
 		this.updateAttempts(this.attempts);
 		this.updateTableRow(false);
 		this.stampa("Hai perso", 'result', 'wrong');
+		this.stopActions();
 		this.stopTimer();
 	},
 	updateAttempts: function(tries) {
