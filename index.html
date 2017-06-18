@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Sparoliere</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
 <div id="main">
@@ -10,6 +10,18 @@
 	<div id="level"></div>
 	<div id="start">
 		<span>START</span>
+	</div>
+	<div id="storico">
+		<table>
+			<thead>
+				<tr>
+					<th>Originale</th>
+					<th>Usata</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
 	</div>
 	<div id="game" class="hide">
 		<div class="text"></div>
@@ -22,13 +34,15 @@
 		<div id="progressBar" >
 		  <div></div>
 		</div>
-		<div class="winner hide" >
-			<video id='video' width="620" height="240" controls>
+			
+	 </div>
+	 <div class="winner hide" >
+			<!-- <video id='video' width="620" height="240" controls>
 			  <source src="video/faniello.mp4" type="video/mp4">
 			Your browser does not support the video tag.
-			</video>
-		</div>	
-	 </div>
+			</video> -->
+			<img src="images/win.png">
+		</div>
 </div>
 <div id="debug"></div>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>

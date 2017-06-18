@@ -84,13 +84,27 @@
 #debug {
 	color: $red;
  }
- .hide {
- 	display: none;
- }
- #video{
- 	position: fixed;
- 	width: 100%;
- 	height: 100%;
- 	top:0;
- 	left: 0;
- }
+.hide {
+	display: none;
+}
+#video{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+}
+
+
+#storico {
+	border: 1px solid black;
+	border-collapse: collapse;
+	position: absolute;
+	display: none;
+}
+.winner {
+	position: fixed;
+top: 0;
+left: 50%;
+margin-top: -100px; /* Negative half of height. */
+margin-left: -250px; /* Negative half of width. */}
